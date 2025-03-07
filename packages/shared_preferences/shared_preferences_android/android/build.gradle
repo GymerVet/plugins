@@ -6,7 +6,6 @@ buildscript {
         google()
         mavenCentral()
     }
-
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.2'
     }
@@ -30,6 +29,9 @@ allprojects {
 apply plugin: 'com.android.library'
 
 android {
+    // Namespace bilgisini ekleyin:
+    namespace 'io.flutter.plugins.sharedpreferences'
+    
     compileSdkVersion 31
 
     defaultConfig {
@@ -44,15 +46,13 @@ android {
         testImplementation 'junit:junit:4.13.2'
         testImplementation 'org.mockito:mockito-inline:5.0.0'
     }
-
-
     testOptions {
         unitTests.includeAndroidResources = true
         unitTests.returnDefaultValues = true
         unitTests.all {
             testLogging {
                events "passed", "skipped", "failed", "standardOut", "standardError"
-               outputs.upToDateWhen {false}
+               outputs.upToDateWhen { false }
                showStandardStreams = true
             }
         }
